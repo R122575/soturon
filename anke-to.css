@@ -1,0 +1,125 @@
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卒業論文のためのアンケート</title>
+    <!-- CSS (スタイル) -->
+    <style>
+        /* 全体レイアウトと文字設定 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            color: #333;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #1a4d8c; /* 濃い青色 */
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        /* ボタンの共通スタイル */
+        .start-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #cc0000; /* 個人情報保護と同じ赤色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            /* モバイルで押しやすいようブロック要素化 */
+            display: block;
+            width: 100%; 
+            max-width: 300px;
+            margin: 20px auto; /* 中央寄せ */
+        }
+        .start-button:hover {
+            background-color: #a00000; /* ホバーで少し暗い赤に */
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><strong>卒業論文のためのアンケート</strong></h1>
+    </header>
+
+    <section>
+        <p>中京大学総合政策学部総合政策学科の坪内梨恵です。</p>
+        <p>この度、卒業論文作成のためにアンケート調査を実施しております。<br>ご多忙中大変恐縮ですが、アンケートにご協力いただけますようお願い申し上げます。</p>
+        
+        
+        <h2>アンケートへのご協力をお願いします。</h2>
+                <!-- type="button" を明記し、ボタンが誤ってフォーム送信動作をしないようにします -->
+        <button id="startButton" class="start-button" type="button">
+            アンケートを開始する
+        </button>
+
+        <hr>
+    </section>
+    
+    <footer>
+        <h3>このページについて</h3>
+        <ul>
+            <li>作成者: 坪内梨恵</li>
+            <li>作成日: 2025年10月28日</li>
+            <li>連絡先: r122139@m.chukyo-u.ac.jp</li>
+        </ul>
+    </footer>
+
+    <!-- JavaScriptコード -->
+    <script>
+        // DOMContentLoaded: HTML要素がすべて読み込まれた後に実行することで、安定性を向上させます。
+        document.addEventListener('DOMContentLoaded', function() {
+            // フォームのURLを設定
+            const formA = "https://forms.gle/4eX9aFaQcfyYnL1MA";
+            const formB = "https://forms.gle/yHqLK6UPv743L3jBA";
+
+            const startButton = document.getElementById('startButton');
+
+            // ボタン要素が確実に存在するかチェック
+            if (startButton) {
+                startButton.addEventListener('click', function() {
+                    try {
+                        const randomNumber = Math.random();
+                        let redirectUrl;
+
+                        // 50%の確率でフォームをランダムに振り分け
+                        if (randomNumber < 0.5) {
+                            redirectUrl = formA;
+                            console.log("Redirecting to Form A (Random)");
+                        } else {
+                            redirectUrl = formB;
+                            console.log("Redirecting to Form B (Random)");
+                        }
+
+                        // ページをリダイレクト（フォームを開く）
+                        window.location.href = redirectUrl;
+                    } catch (error) {
+                        // エラーが発生した場合のログ出力とユーザーへの通知
+                        console.error("An error occurred during redirect process:", error);
+                        // モバイル環境でアラートを表示 (デバッグ用)
+                        alert("アンケート開始時にエラーが発生しました。時間を置いて再度お試しください。");
+                    }
+                });
+            } else {
+                console.error("The startButton element was not found.");
+            }
+        });
+    </script>
+</body>
+</html>
